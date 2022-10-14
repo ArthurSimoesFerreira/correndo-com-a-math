@@ -51,5 +51,3 @@ def start_game():
         if keyboard.key_pressed("ESC"):
             break
         window.update()
-
-start_game()

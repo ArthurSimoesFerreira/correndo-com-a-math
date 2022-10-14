@@ -7,7 +7,6 @@ from PPlay.keyboard import*
 def start_game():
 
     window = Window(1100,650)
-    mouse = window.get_mouse()
     keyboard = window.get_keyboard()
 
     # Background

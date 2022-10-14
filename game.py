@@ -36,8 +36,8 @@ def start_game():
 
     # Asteróide
     asteroide = Sprite("asteroide.png")
-    asteroide.x = navePersonagem.x
-    asteroide.y = navePersonagem.y
+    asteroide.x = 800
+    asteroide.y = navePersonagem.y 
 
     while(True):
         

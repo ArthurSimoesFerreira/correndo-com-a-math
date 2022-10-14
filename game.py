@@ -34,12 +34,18 @@ def start_game():
     painelPontos.x = window.width/2 - painelPontos.width/2
     painelPontos.y = window.height - painelPontos.height
 
+    # Asteróide
+    asteroide = Sprite("asteroide.png")
+    asteroide.x = navePersonagem.x
+    asteroide.y = navePersonagem.y
+
     while(True):
         
         backgroundMenu.draw()
         navePersonagem.draw()
         naveAlien1.draw()
         naveAlien2.draw()
+        asteroide.draw()
         painelPontos.draw()
 
         if keyboard.key_pressed("ESC"):

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# coding= utf-8
-
-=======
->>>>>>> 353971982fe4bfadda67811a5a93ce715cb9e2e3
 # Pygame and system modules
 import sys
 import pygame

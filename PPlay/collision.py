@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-# coding= utf-8
-
-=======
->>>>>>> 353971982fe4bfadda67811a5a93ce715cb9e2e3
 # Modules import
 from . import point
 import pygame
 
-<<<<<<< HEAD
-# -*- coding: utf-8 -*-
-
-=======
->>>>>>> 353971982fe4bfadda67811a5a93ce715cb9e2e3
 """A simple class to deal with basic collision methods"""
 """
 Must note that the collision is inclusive, i.e.,

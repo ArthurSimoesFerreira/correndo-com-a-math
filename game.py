@@ -10,31 +10,31 @@ def start_game():
     keyboard = window.get_keyboard()
 
     # Background
-    backgroundMenu = Sprite("fundo_corrida.png", 1)
+    backgroundMenu = Sprite("assets\\background_race.png", 1)
     backgroundMenu.x = window.width/2 - backgroundMenu.width/2
 
     # Nave Personagem
-    navePersonagem = Sprite("nave_personagem.png", 1)
+    navePersonagem = Sprite("assets\\ship_math.png", 1)
     navePersonagem.x = 0
     navePersonagem.y = window.height*2/4 - navePersonagem.height/2 - 30
 
     # Nave Alienígena 1
-    naveAlien1 = Sprite("nave_alien.png", 1)
+    naveAlien1 = Sprite("assets\\ship_alien.png", 1)
     naveAlien1.x = 0
     naveAlien1.y = window.height*3/4 - naveAlien1.height/2 - 30
     
     # Nave Alienígena 2
-    naveAlien2 = Sprite("nave_alien.png", 1)
+    naveAlien2 = Sprite("assets\\ship_alien.png", 1)
     naveAlien2.x = 0
     naveAlien2.y = window.height/4 - naveAlien2.height/2 - 30
 
     # Painel De Pontos
-    painelPontos = Sprite("painel.png")
+    painelPontos = Sprite("assets\\score_panel.png")
     painelPontos.x = window.width/2 - painelPontos.width/2
     painelPontos.y = window.height - painelPontos.height
 
     # Asteróide
-    asteroide = Sprite("asteroide.png")
+    asteroide = Sprite("assets\\asteroid.png")
     asteroide.x = 800
     asteroide.y = navePersonagem.y 
 

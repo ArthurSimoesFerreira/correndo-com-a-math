@@ -17,6 +17,16 @@ Controla em que estágio o jogo se encontra:
 3 - Finalização do jogo (Pontuação)
 """
 
+"""
+!!!!
+Quando, dentro de uma função, você modifica alguma variável
+que foi criada aqui no main, antes do GAMELOOP, 
+por exemplo: "asteroids[i] = asteroid" OU "GAME_STATE = 2"
+a função tem que estar aqui no main e
+tem que escrever "global variável" no início.
+!!!
+"""
+
 # Window
 background_color = [0, 0, 0]
 window = Window(1100, 650)

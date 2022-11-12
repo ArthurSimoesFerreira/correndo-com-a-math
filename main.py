@@ -5,6 +5,7 @@ from PPlay.mouse import*
 from PPlay.keyboard import*
 from draw import *
 from scrolling import *
+from asteroid_movement import *
 
 DIFFICULTY = 1
 GAME_STATE = 0 
@@ -71,8 +72,48 @@ score_panel = Sprite("assets\\score_panel.png")
 score_panel.x = window_width/2 - score_panel.width/2
 score_panel.y = window_height - score_panel.height
 
-# Asteróide
-asteroid = Sprite("assets\\asteroid.png")
+# Imagem do Asteróide
+asteroid_image = "assets\\asteroid.png"
+# Velocidade do Asteróide
+asteroid_speed = 50
+# Tamanho do asteróide
+asteroid_length = 5
+# Lista de asteróides
+asteroids = []
+
+
+def spawn_asteroid():
+    """
+    Gera a lista de asteróides
+    """
+    global asteroids
+
+    # Cria a lista de asteroides vazia (só com zeros)
+    asteroids = [0 for _ in range(asteroid_length)]
+
+    # for i percorre cada elemento da lista
+    for i in range(asteroid_length):
+        # Cria o Sprite do asteroide
+        asteroid = Sprite(asteroid_image)
+        # Define a posição dos asteroides
+        asteroid.set_position(window_width + (800 * i)/DIFFICULTY, ship_math.y)
+        # Define a direção do movimento, no caso esquerda
+        asteroid.direction = -1  # -1 = esquerda
+        # Defina se o asteroide ta aparecendo ou não (0-> Não existe \ 1 -> Existe)
+        asteroid.exist = 1
+        # Coloca o asteroide recém criado na lista
+        asteroids[i] = asteroid
+
+
+def restart():
+    """
+    Reinicia o Jogo 
+    """
+    # Apaga tudo na lista de asteroides
+    asteroids.clear()
+
+    # Cria de novo todos os asteroids
+    spawn_asteroid()
 
 
 def exit_race():
@@ -93,18 +134,24 @@ def menu():
     # Apertar o botão para começar o jogo
     if mouse.is_over_object (button_start) and mouse.is_button_pressed(1) :
         GAME_STATE = 2
+        restart()
 
     # ESC para fechar o jogo
     if (keyboard.key_pressed("ESC")):
         exit()
 
+
+# GAME LOOP
 while True:
 
     if GAME_STATE == 0:
         background_menu.draw()
         menu()
+
+
     elif GAME_STATE == 1:
         pass
+
 
     # Se não for a primeira vez, quer dizer que a partida ainda
     # está acontecendo. 
@@ -112,7 +159,9 @@ while True:
 
         scrolling(window, background_race_1, background_race_2, background_roll_speed)
 
-        draw(ship_math, ship_alien_1, ship_alien_2, asteroid, score_panel)
+        asteroid_movement(DIFFICULTY, window, asteroids, asteroid_speed, asteroid_length)
+
+        draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asteroids, asteroid_length)
 
         exit_race()
 

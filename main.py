@@ -6,6 +6,9 @@ from PPlay.keyboard import*
 from draw import *
 from scrolling import *
 from asteroid_movement import *
+import random
+
+random.seed()
 
 DIFFICULTY = 1
 GAME_STATE = 0 
@@ -90,6 +93,37 @@ asteroid_speed = 50
 asteroid_length = 5
 # Lista de asteróides
 asteroids = []
+
+# Operador da Equação: (Para escrever na tela depois)
+operator = ""
+operand_1 = 0
+operand_2 = 0
+result = 0
+
+
+def create_equation():
+    """
+    Função que cria as equações randomicamente
+    """
+
+    global operator
+    global operand_1
+    global operand_2
+    global result   
+    
+    equation = random.randint(0, 3)
+    """
+    0 -> Adição / 1 -> Subtração / 2 -> Divisão / 3 -> Multiplicação
+    """
+
+    if equation == 0:
+        operator = "+"
+    elif equation == 1: 
+        operator = "-"
+    elif equation == 2:
+        operator = "/"
+    elif equation == 3:
+        operator = "*"
 
 
 def spawn_asteroid():

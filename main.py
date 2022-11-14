@@ -69,16 +69,22 @@ story_panel.y= ((window_height)/2 - (story_panel.height)*2/3)
 ship_math = Sprite("assets\\ship_math.png", 1)
 ship_math.x = 0
 ship_math.y = window_height*2/4 - ship_math.height/2 - 30
+# Velocidade da nave 
+ship_math.speed = 0
 
 # Nave Alienígena 1
 ship_alien_1 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_1.x = 0
 ship_alien_1.y = window_height*3/4 - ship_alien_1.height/2 - 30
+# Velocidade da nave alien 1
+ship_alien_1.speed = 0
 
 # Nave Alienígena 2
 ship_alien_2 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_2.x = 0
 ship_alien_2.y = window_height/4 - ship_alien_2.height/2 - 30
+# Velocidade da nave alien 2
+ship_alien_2.speed = 0
 
 # Painel De Pontos
 score_panel = Sprite("assets\\score_panel.png")

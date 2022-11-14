@@ -1,0 +1,23 @@
+⁃	Menu:
+> botão play direcionando pra tela de transição ✅(Só ainda não tem transicao, ent ta direto pro jogo)
+> tela ✅
+> história na tela
+
+⁃	Tela de transição:
+> achar um gif com as fotos 
+> botar o gif de fundo
+> botar a contagem regressiva 
+
+⁃	Jogo:
+> naves andando (todas)
+> implementar ia nas naves inimigas
+> sincronizar velocidades com acertos
+> asteroide vindo com as contas
+> contas aleatórias 
+> mostras as contas
+> entrada de resposta 
+> contagem de acertos
+> aparecer uma linha de chegada depois dos asteróides
+
+⁃	Tela de fim de jogo:
+> Mostrar alguma mensagem

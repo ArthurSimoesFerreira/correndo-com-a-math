@@ -49,7 +49,7 @@ background_race_1.x = 0
 background_race_2.x = window_width
 
 # Velocidade de rolagem
-background_roll_speed = 50
+background_roll_speed = 60
 
 background_menu = Sprite("assets\\background_menu.png", 1)
 background_menu.x = window_width/2 - background_menu.width/2
@@ -63,28 +63,48 @@ button_start.y = ((window_height)/2 + (button_start .height * 3/1.8))
 # Story Panel
 story_panel = Sprite("assets\\window_story.png",1)
 story_panel.x= ((window_width)/2 - (story_panel.width)/2)
-story_panel.y= ((window_height)/2 - (story_panel.height)*2/3)
+story_panel.y= ((window_height)/2 - (story_panel.height)*2/3) 
+
+# Text Story Panel
+text1="ATENÇÃO: O planeta Terra foi invadido! A"
+text2="Organização PROVA está atacando os humanos."
+text3="SUA MISSÃO: Vencer a corrida de conhecimento e,"
+text4="assim, salvar o mundo!"
+text5="Você terá somente uma aliada, a Math, uma"
+text6="astronauta com dons matemáticos."
+text7="BOA SORTE!"
+
 
 # Nave Personagem
 ship_math = Sprite("assets\\ship_math.png", 1)
 ship_math.x = 0
 ship_math.y = window_height*2/4 - ship_math.height/2 - 30
 # Velocidade da nave 
-ship_math.speed = 0
+ship_math.speed = 5
 
 # Nave Alienígena 1
 ship_alien_1 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_1.x = 0
 ship_alien_1.y = window_height*3/4 - ship_alien_1.height/2 - 30
 # Velocidade da nave alien 1
-ship_alien_1.speed = 0
+ship_alien_1.speed = 3
+#guess é a variável que indica se a pergunta foi respondida de forma correta ou não,e por ela a velocidade das naves inimigas são modificadas
+guess=2 #depois tem que escrever a parte do código em que ela vai ser apresentada 
+if guess==1:
+    ship_alien_1.speed = ship_alien_1.speed * 0,5
+elif guess==0:
+    ship_alien_1.speed = ship_alien_1.speed * 2
 
 # Nave Alienígena 2
 ship_alien_2 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_2.x = 0
 ship_alien_2.y = window_height/4 - ship_alien_2.height/2 - 30
 # Velocidade da nave alien 2
-ship_alien_2.speed = 0
+ship_alien_2.speed = 3
+if guess==1:
+    ship_alien_2.speed = ship_alien_2.speed * 0,5
+elif guess ==0:
+    ship_alien_2.speed = ship_alien_2.speed * 2
 
 # Painel De Pontos
 score_panel = Sprite("assets\\score_panel.png")
@@ -94,9 +114,9 @@ score_panel.y = window_height - score_panel.height
 # Imagem do Asteróide
 asteroid_image = "assets\\asteroid.png"
 # Velocidade do Asteróide
-asteroid_speed = 50
+asteroid_speed = 70
 # Tamanho do asteróide
-asteroid_length = 5
+asteroid_length = 15
 # Lista de asteróides
 asteroids = []
 
@@ -117,6 +137,11 @@ def create_equation():
     global operand_2
     global result   
     
+    # escolha aleatória dos operandos
+    operand_1 = random.randint(0,99)
+    operand_2 = random.randint(0,99)
+
+    #escolha aleatória do operador
     equation = random.randint(0, 3)
     """
     0 -> Adição / 1 -> Subtração / 2 -> Divisão / 3 -> Multiplicação
@@ -131,20 +156,26 @@ def create_equation():
     elif equation == 3:
         operator = "*"
 
+    return(operand_1, operator, operand_2)
+
 
 def spawn_asteroid():
     """
-    Gera a lista de asteróides
+    Gera a lista de asteróides e de equações
     """
     global asteroids
 
     # Cria a lista de asteroides vazia (só com zeros)
     asteroids = [0 for _ in range(asteroid_length)]
+    # Cria a lista de equações vazia 
+    equations = [0 for _ in range (asteroid_length)]
 
     # for i percorre cada elemento da lista
     for i in range(asteroid_length):
         # Cria o Sprite do asteroide
         asteroid = Sprite(asteroid_image)
+        # Cria a equação que vai estar no asteroide 
+        current_equation = create_equation()
         # Define a posição dos asteroides
         asteroid.set_position(window_width + (800 * i)/DIFFICULTY, ship_math.y)
         # Define a direção do movimento, no caso esquerda
@@ -153,6 +184,8 @@ def spawn_asteroid():
         asteroid.exist = 1
         # Coloca o asteroide recém criado na lista
         asteroids[i] = asteroid
+        # Coloca a equação recém criada na lista
+        equations[i] = current_equation
 
 
 def restart():
@@ -179,6 +212,15 @@ def menu():
     global GAME_STATE
 
     story_panel.draw()
+    #Text Story Panel draw
+    window.draw_text(str(text1), 370, 170, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+    window.draw_text(str(text2), 370, 195, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+    window.draw_text(str(text3), 370, 225, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+    window.draw_text(str(text4), 370, 250, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+    window.draw_text(str(text5), 370, 280, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+    window.draw_text(str(text6), 370, 305, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+    window.draw_text(str(text7), 500, 335, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+
     button_start.draw()
 
     # Apertar o botão para começar o jogo
@@ -210,6 +252,11 @@ while True:
         scrolling(window, background_race_1, background_race_2, background_roll_speed)
 
         asteroid_movement(DIFFICULTY, window, asteroids, asteroid_speed, asteroid_length)
+
+        #velocidades das naves
+        ship_math.x=ship_math.x + ship_math.speed*(window.delta_time())
+        ship_alien_1.x=ship_alien_1.x + ship_alien_1.speed*(window.delta_time())
+        ship_alien_2.x=ship_alien_2.x + ship_alien_2.speed*(window.delta_time())
 
         draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asteroids, asteroid_length)
 

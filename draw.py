@@ -8,6 +8,8 @@ def draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asteroids, asteroid
     # Desenhar o painel de pontos
     score_panel.draw()
 
+    #Desenhar as contas nos asteroides
+
     # Percorre a lista de asteroides
     for i in range(asteroid_length):
         # Caso o asteroide esteja vivo

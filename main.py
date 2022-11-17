@@ -156,8 +156,6 @@ def create_equation():
     elif equation == 3:
         operator = "*"
 
-    return(operand_1, operator, operand_2)
-
 
 def spawn_asteroid():
     """

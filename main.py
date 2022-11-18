@@ -31,6 +31,7 @@ tem que escrever "global variável" no início.
 """
 
 # Window
+0
 background_color = [0, 0, 0]
 window = Window(1100, 650)
 window_width = window.width
@@ -111,6 +112,21 @@ score_panel = Sprite("assets\\score_panel.png")
 score_panel.x = window_width/2 - score_panel.width/2
 score_panel.y = window_height - score_panel.height
 
+# Botões de Resposta
+asw1 = Sprite("assets\\asw.png")
+tinyspace= (((window_width/2 - score_panel.width/2)/2) - asw1.width)/2
+asw1.x = tinyspace
+asw1.y = window_height - score_panel.height
+asw2 = Sprite("assets\\asw.png")
+asw2.x = (3*tinyspace) + (asw2.width)
+asw2.y = window_height - score_panel.height
+asw3 = Sprite("assets\\asw.png")
+asw3.x = (5*tinyspace) + (2*asw3.width) + (score_panel.width)
+asw3.y = window_height - score_panel.height
+asw4 = Sprite("assets\\asw.png")
+asw4.x = (7*tinyspace) + (3*asw3.width) + (score_panel.width)
+asw4.y = window_height - score_panel.height
+
 # Imagem do Asteróide
 asteroid_image = "assets\\asteroid.png"
 # Velocidade do Asteróide
@@ -138,10 +154,12 @@ def create_equation():
     global result   
     
     # escolha aleatória dos operandos
-    operand_1 = random.randint(0,99)
-    operand_2 = random.randint(0,99)
+    num1 = random.randint(0,99)
+    num2 = random.randint(1,99)
+    operand_1 = str(num1)
+    operand_2 = str(num2)
 
-    #escolha aleatória do operador
+    # escolha aleatória do operador
     equation = random.randint(0, 3)
     """
     0 -> Adição / 1 -> Subtração / 2 -> Divisão / 3 -> Multiplicação
@@ -149,12 +167,19 @@ def create_equation():
 
     if equation == 0:
         operator = "+"
+        res=num1+num2
     elif equation == 1: 
         operator = "-"
+        res=num1-num2
     elif equation == 2:
-        operator = "/"
+        operator = "÷"
+        res=num1/num2
     elif equation == 3:
-        operator = "*"
+        operator = "x"
+        res=num1*num2
+
+
+    return (operand_1+operator+operand_2) 
 
 
 def spawn_asteroid():
@@ -162,6 +187,7 @@ def spawn_asteroid():
     Gera a lista de asteróides e de equações
     """
     global asteroids
+    global equations 
 
     # Cria a lista de asteroides vazia (só com zeros)
     asteroids = [0 for _ in range(asteroid_length)]
@@ -256,7 +282,7 @@ while True:
         ship_alien_1.x=ship_alien_1.x + ship_alien_1.speed*(window.delta_time())
         ship_alien_2.x=ship_alien_2.x + ship_alien_2.speed*(window.delta_time())
 
-        draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asteroids, asteroid_length)
+        draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asw1, asw2, asw3, asw4, asteroids, asteroid_length, equations, window)
 
         exit_race()
 

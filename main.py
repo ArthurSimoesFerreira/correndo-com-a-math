@@ -201,7 +201,7 @@ def spawn_asteroid():
         # Cria a equação que vai estar no asteroide 
         current_equation = create_equation()
         # Define a posição dos asteroides
-        asteroid.set_position(window_width + (800 * i)/DIFFICULTY, ship_math.y)
+        asteroid.set_position(window_width + (1300 * i)/DIFFICULTY, ship_math.y)
         # Define a direção do movimento, no caso esquerda
         asteroid.direction = -1  # -1 = esquerda
         # Defina se o asteroide ta aparecendo ou não (0-> Não existe \ 1 -> Existe)

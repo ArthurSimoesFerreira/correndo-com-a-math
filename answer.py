@@ -7,7 +7,7 @@ def answer(num1, num2, equation, res):
 
     """
     if equation == 0:
-        option1= random.randint(0,res)
+        option1= random.randint(0,(res-1))
         option2= random.randint(res,99)
         option3= res+1
         option4= res
@@ -29,4 +29,5 @@ def answer(num1, num2, equation, res):
 
 
     # desenhar as opções de resposta de forma aleatória nos botões
+    # comparar as respostas para ver qual ta certa
     

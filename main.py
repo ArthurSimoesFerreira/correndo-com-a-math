@@ -6,6 +6,7 @@ from PPlay.keyboard import*
 from draw import *
 from scrolling import *
 from asteroid_movement import *
+from answer import*
 import random
 
 random.seed()
@@ -88,24 +89,14 @@ ship_alien_1 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_1.x = 0
 ship_alien_1.y = window_height*3/4 - ship_alien_1.height/2 - 30
 # Velocidade da nave alien 1
-ship_alien_1.speed = 3
-#guess é a variável que indica se a pergunta foi respondida de forma correta ou não,e por ela a velocidade das naves inimigas são modificadas
-guess=2 #depois tem que escrever a parte do código em que ela vai ser apresentada 
-if guess==1:
-    ship_alien_1.speed = ship_alien_1.speed * 0,5
-elif guess==0:
-    ship_alien_1.speed = ship_alien_1.speed * 2
+ship_alien_1.speed = 4
 
 # Nave Alienígena 2
 ship_alien_2 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_2.x = 0
 ship_alien_2.y = window_height/4 - ship_alien_2.height/2 - 30
 # Velocidade da nave alien 2
-ship_alien_2.speed = 3
-if guess==1:
-    ship_alien_2.speed = ship_alien_2.speed * 0,5
-elif guess ==0:
-    ship_alien_2.speed = ship_alien_2.speed * 2
+ship_alien_2.speed = 4
 
 # Painel De Pontos
 score_panel = Sprite("assets\\score_panel.png")
@@ -127,59 +118,121 @@ asw4 = Sprite("assets\\asw.png")
 asw4.x = (7*tinyspace) + (3*asw3.width) + (score_panel.width)
 asw4.y = window_height - score_panel.height
 
+# Em quais botões cada opção vai ficar
+button_1_option = 0
+button_2_option = 0
+button_3_option = 0
+button_4_option = 0
+
 # Imagem do Asteróide
 asteroid_image = "assets\\asteroid.png"
 # Velocidade do Asteróide
 asteroid_speed = 70
 # Tamanho do asteróide
-asteroid_length = 15
+asteroid_length = 10
 # Lista de asteróides
 asteroids = []
+# Lista de equações string
+equations_strings = []
+# Lista de opções de respostas (A equations_options[_][4] é sempre a correta)
+equations_options = []
 
-# Operador da Equação: (Para escrever na tela depois)
-operator = ""
-operand_1 = 0
-operand_2 = 0
-result = 0
+# Fonte
+fonte = pygame.font.SysFont('ariel', 50, True, False)
+
+# Tela
+screen = window.screen
 
 
 def create_equation():
     """
     Função que cria as equações randomicamente
-    """
-
-    global operator
-    global operand_1
-    global operand_2
-    global result   
-    
-    # escolha aleatória dos operandos
-    num1 = random.randint(0,99)
-    num2 = random.randint(1,99)
-    operand_1 = str(num1)
-    operand_2 = str(num2)
+    """  
+    global equations_strings
+    global equations_options
 
     # escolha aleatória do operador
     equation = random.randint(0, 3)
-    """
-    0 -> Adição / 1 -> Subtração / 2 -> Divisão / 3 -> Multiplicação
-    """
+    # 0 -> Adição / 1 -> Subtração / 2 -> Divisão / 3 -> Multiplicação
 
     if equation == 0:
+        # escolha aleatória dos operandos
+        num1 = random.randint(0,50)
+        num2 = random.randint(1,50)
+        operand_1 = str(num1)
+        operand_2 = str(num2)
+
         operator = "+"
         res=num1+num2
     elif equation == 1: 
+        # escolha aleatória dos operandos
+        num1 = random.randint(0,50)
+        num2 = random.randint(1,50)
+        operand_1 = str(num1)
+        operand_2 = str(num2)
+
         operator = "-"
         res=num1-num2
     elif equation == 2:
+        # escolha aleatória dos operandos
+        num2 = random.randint(1,50)
+        num1 = random.randint(num2,num2 + 50)
+        operand_1 = str(num1)
+        operand_2 = str(num2)
+
         operator = "÷"
-        res=num1/num2
+        res = round(num1/num2, 2)
     elif equation == 3:
+        # escolha aleatória dos operandos
+        num1 = random.randint(0,50)
+        num2 = random.randint(1, 50)
+        operand_1 = str(num1)
+        operand_2 = str(num2)
+
         operator = "x"
         res=num1*num2
 
+    # Adiciona a lista [opção1, opção2, opção3(a mais perto), res] na matriz de opções
+    equations_options.append(answer(num1, num2, equation, res))
 
     return (operand_1+operator+operand_2) 
+
+
+def onscreen():
+    """
+    Verifica sempre se o asteroide está na tela ou não, mudando a propriedade
+    E sorteia os botões de cada opção
+    """
+
+    global button_1_option
+    global button_2_option
+    global button_3_option
+    global button_4_option
+
+    for i in range(len(asteroids)):
+        if (((asteroids[i].x > 0 - asteroids[i].width) and (asteroids[i].x < window.width)) and (asteroids[i].is_onscreen == 0)):
+            # Define que o asteróide entrou na tela nesse momento
+            asteroids[i].is_onscreen = 1
+            # Sortea a opção que vai aparecer em cada botão
+            # Os whiles não deixam que uma opção seja igual a outra
+            # O range está (0,3) porque iremos precisar desse número para verficar a lista de opções
+            button_1_option = random.randint(0,3)
+
+            button_2_option = random.randint(0,3)
+            while (button_2_option == button_1_option):
+                button_2_option = random.randint(0,3)
+
+            button_3_option = random.randint(0,3)
+            while (button_3_option == button_1_option or button_3_option == button_2_option):
+                button_3_option = random.randint(0,3)
+
+            button_4_option = random.randint(0,3)
+            while (button_4_option == button_1_option or button_4_option == button_2_option or button_4_option == button_3_option):
+                button_4_option = random.randint(0,3)
+            
+        if (((asteroids[i].x < 0 - asteroids[i].width) or (asteroids[i].x > window.width)) and (asteroids[i].is_onscreen == 1)):
+            # Define que o asteróide saiu da tela nesse momento
+            asteroids[i].is_onscreen = 0
 
 
 def spawn_asteroid():
@@ -187,12 +240,12 @@ def spawn_asteroid():
     Gera a lista de asteróides e de equações
     """
     global asteroids
-    global equations 
+    global equations_strings 
 
     # Cria a lista de asteroides vazia (só com zeros)
     asteroids = [0 for _ in range(asteroid_length)]
     # Cria a lista de equações vazia 
-    equations = [0 for _ in range (asteroid_length)]
+    equations_strings = [0 for _ in range (asteroid_length)]
 
     # for i percorre cada elemento da lista
     for i in range(asteroid_length):
@@ -201,15 +254,49 @@ def spawn_asteroid():
         # Cria a equação que vai estar no asteroide 
         current_equation = create_equation()
         # Define a posição dos asteroides
-        asteroid.set_position(window_width + (1300 * i)/DIFFICULTY, ship_math.y)
+        asteroid.set_position(window_width + (1202 * i)/DIFFICULTY, ship_math.y)
         # Define a direção do movimento, no caso esquerda
         asteroid.direction = -1  # -1 = esquerda
         # Defina se o asteroide ta aparecendo ou não (0-> Não existe \ 1 -> Existe)
         asteroid.exist = 1
+        # Define se o asteroide está na tela ou não (0 -> Não está \ 1 -> Está)
+        asteroid.is_onscreen = 0
         # Coloca o asteroide recém criado na lista
         asteroids[i] = asteroid
         # Coloca a equação recém criada na lista
-        equations[i] = current_equation
+        equations_strings[i] = current_equation
+
+
+def show_options():
+    """
+    Mostro todas as opções nos botões
+    """
+    for i in range(len(asteroids)):
+        if asteroids[i].is_onscreen == 1:
+            # Escrever no botão 1
+            button_1_string = f"{equations_options[i][button_1_option]}"
+            grouping_button_1 = fonte.render(button_1_string, False, (255,255,255))
+            text_button_1 = grouping_button_1.get_rect()
+            text_button_1.center = (asw1.x + asw1.width/2, asw1.y + asw1.height/2)
+            screen.blit(grouping_button_1, (asw1.x + asw1.width/2 - text_button_1.width/2 , asw1.y + asw1.height/2 - text_button_1.height/2))
+            # Escrever no botão 2
+            button_2_string = f"{equations_options[i][button_2_option]}"
+            grouping_button_2 = fonte.render(button_2_string, False, (255,255,255))
+            text_button_2 = grouping_button_2.get_rect()
+            text_button_2.center = (asw2.x + asw2.width/2, asw2.y + asw2.height/2)
+            screen.blit(grouping_button_2, (asw2.x + asw2.width/2 - text_button_2.width/2 , asw2.y + asw2.height/2 - text_button_2.height/2))
+            # Escrever no botão 3
+            button_3_string = f"{equations_options[i][button_3_option]}"
+            grouping_button_3 = fonte.render(button_3_string, False, (255,255,255))
+            text_button_3 = grouping_button_3.get_rect()
+            text_button_3.center = (asw3.x + asw3.width/2, asw3.y + asw3.height/2)
+            screen.blit(grouping_button_3, (asw3.x + asw3.width/2 - text_button_3.width/2 , asw3.y + asw3.height/2 - text_button_3.height/2))
+            # Escrever no botão 4
+            button_4_string = f"{equations_options[i][button_4_option]}"
+            grouping_button_4 = fonte.render(button_4_string, False, (255,255,255))
+            text_button_4 = grouping_button_4.get_rect()
+            text_button_4.center = (asw4.x + asw4.width/2, asw4.y + asw4.height/2)
+            screen.blit(grouping_button_4, (asw4.x + asw4.width/2 - text_button_4.width/2 , asw4.y + asw4.height/2 - text_button_4.height/2))
 
 
 def restart():
@@ -276,14 +363,18 @@ while True:
         scrolling(window, background_race_1, background_race_2, background_roll_speed)
 
         asteroid_movement(DIFFICULTY, window, asteroids, asteroid_speed, asteroid_length)
-
+        
         #velocidades das naves
         ship_math.x=ship_math.x + ship_math.speed*(window.delta_time())
         ship_alien_1.x=ship_alien_1.x + ship_alien_1.speed*(window.delta_time())
         ship_alien_2.x=ship_alien_2.x + ship_alien_2.speed*(window.delta_time())
 
-        draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asw1, asw2, asw3, asw4, asteroids, asteroid_length, equations, window)
+        onscreen()
+        draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asw1, asw2, asw3, asw4, asteroids, asteroid_length, equations_strings, window)
 
+        show_options()
+
+        
         exit_race()
 
     # Atualizo a Janela

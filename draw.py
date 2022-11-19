@@ -1,4 +1,4 @@
-def draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asw1, asw2, asw3, asw4, asteroids, asteroid_length, equations, window):
+def draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asw1, asw2, asw3, asw4, asteroids, asteroid_length, equations_strings, window):
 
     # Desenhar a nave da MATH
     ship_math.draw()
@@ -20,7 +20,7 @@ def draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asw1, asw2, asw3, a
             # Desenha ele
             asteroids[i].draw()
             # Desenhar as contas nos asteroide
-            window.draw_text(str(equations[i]), (asteroids[i].x + 40), (asteroids[i].y + 65), size=40, color=(255, 255, 255), font_name="Ariel", bold= False, italic= False)
+            window.draw_text(str(equations_strings[i]), (asteroids[i].x + 40), (asteroids[i].y + 65), size=40, color=(255, 255, 255), font_name="Ariel", bold= False, italic= False)
     
 
     

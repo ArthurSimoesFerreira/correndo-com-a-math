@@ -211,7 +211,7 @@ def onscreen():
 
     for i in range(len(asteroids)):
         if (((asteroids[i].x > 0 - asteroids[i].width) and (asteroids[i].x < window.width)) and 
-        (asteroids[i].is_onscreen == 0) and (asteroids[i].destroid==0)):
+        (asteroids[i].is_onscreen == 0) and (asteroids[i].destroyed==0)):
             # Define que o asteróide entrou na tela nesse momento
             asteroids[i].is_onscreen = 1
             # Sortea a opção que vai aparecer em cada botão
@@ -264,7 +264,7 @@ def spawn_asteroid():
         # Define se o asteroide está na tela ou não (0 -> Não está \ 1 -> Está)
         asteroid.is_onscreen = 0
         # Definir se foi destruido
-        asteroid.destroid = 0
+        asteroid.destroyed = 0
         # Coloca o asteroide recém criado na lista
         asteroids[i] = asteroid
         # Coloca a equação recém criada na lista
@@ -318,7 +318,7 @@ def click():
                     pass
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
-                asteroids[j].destroid=1
+                asteroids[j].destroyed=1
     if mouse.is_over_object (asw2) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
             if asteroids[j].is_onscreen==1:  
@@ -334,7 +334,7 @@ def click():
                     pass
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
-                asteroids[j].destroid=1
+                asteroids[j].destroyed=1
                     
     if mouse.is_over_object (asw3) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
@@ -352,7 +352,7 @@ def click():
                     pass
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
-                asteroids[j].destroid=1
+                asteroids[j].destroyed=1
     if mouse.is_over_object (asw4) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
             if asteroids[j].is_onscreen==1:  
@@ -367,7 +367,7 @@ def click():
                     pass
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
-                asteroids[j].destroid=1
+                asteroids[j].destroyed=1
 
 
 

@@ -82,7 +82,7 @@ ship_math = Sprite("assets\\ship_math.png", 1)
 ship_math.x = 0
 ship_math.y = window_height*2/4 - ship_math.height/2 - 30
 # Velocidade da nave 
-ship_math.speed = 5
+ship_math.speed = 3
 
 # Nave Alienígena 1
 ship_alien_1 = Sprite("assets\\ship_alien.png", 1)
@@ -210,7 +210,8 @@ def onscreen():
     global button_4_option
 
     for i in range(len(asteroids)):
-        if (((asteroids[i].x > 0 - asteroids[i].width) and (asteroids[i].x < window.width)) and (asteroids[i].is_onscreen == 0) and (asteroids[i].destroid==0)):
+        if (((asteroids[i].x > 0 - asteroids[i].width) and (asteroids[i].x < window.width)) and 
+        (asteroids[i].is_onscreen == 0) and (asteroids[i].destroid==0)):
             # Define que o asteróide entrou na tela nesse momento
             asteroids[i].is_onscreen = 1
             # Sortea a opção que vai aparecer em cada botão
@@ -230,7 +231,8 @@ def onscreen():
             while (button_4_option == button_1_option or button_4_option == button_2_option or button_4_option == button_3_option):
                 button_4_option = random.randint(0,3)
             
-        if (((asteroids[i].x < 0 - asteroids[i].width) or (asteroids[i].x > window.width)) and (asteroids[i].is_onscreen == 1)):
+        if (((asteroids[i].x - asteroid_speed * window.delta_time() <= 0 - asteroids[i].width) or 
+        (asteroids[i].x > window.width)) and (asteroids[i].is_onscreen == 1)):
             # Define que o asteróide saiu da tela nesse momento
             asteroids[i].is_onscreen = 0
 
@@ -303,67 +305,69 @@ def show_options():
 def click():
     if mouse.is_over_object (asw1) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
-            if  asteroids[j].is_onscreen==1:  
+            if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_1_option]== equations_options[j][3]:           
                     #soma ponto
-                    #tira o asteroide
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
+                    #tira o asteroid
+                    #aumenta a velocidade da nave
+                    pass
                     
                 else:
                     #tira o asteroid
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
-                    
+                    #aumenta a velocidade dos aliens
+                    pass
+                asteroids[j].exist=0
+                asteroids[j].is_onscreen=0
+                asteroids[j].destroid=1
     if mouse.is_over_object (asw2) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
-            if  asteroids[j].is_onscreen==1:  
+            if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_2_option]== equations_options[j][3]:           
                     #soma ponto
-                    #tira o asteroide
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
+                    #tira o asteroid
+                    #aumenta a velocidade da nave
+                    pass
                     
                 else:
                     #tira o asteroid
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
+                    #aumenta a velocidade dos aliens
+                    pass
+                asteroids[j].exist=0
+                asteroids[j].is_onscreen=0
+                asteroids[j].destroid=1
                     
     if mouse.is_over_object (asw3) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
-            if  asteroids[j].is_onscreen==1:  
+            if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_3_option]== equations_options[j][3]:           
                     #soma ponto
-                    #tira o asteroide
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
+                    #tira o asteroid
+                    #aumenta a velocidade da nave
+
+                    pass
                     
                 else:
                     #tira o asteroid
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
-                    
+                    #aumenta a velocidade dos aliens
+                    pass
+                asteroids[j].exist=0
+                asteroids[j].is_onscreen=0
+                asteroids[j].destroid=1
     if mouse.is_over_object (asw4) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
-            if  asteroids[j].is_onscreen==1:  
+            if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_4_option]== equations_options[j][3]:           
                     #soma ponto
-                    #tira o asteroide
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
-                    
+                    #tira o asteroid
+                    #aumenta a velocidade da nave
+                    pass
                 else:
                     #tira o asteroid
-                    asteroids[j].exist=0
-                    asteroids[j].is_onscreen=0
-                    asteroids[j].destroid=1
+                    #aumenta a velocidade dos aliens
+                    pass
+                asteroids[j].exist=0
+                asteroids[j].is_onscreen=0
+                asteroids[j].destroid=1
 
 
 

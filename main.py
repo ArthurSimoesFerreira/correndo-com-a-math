@@ -210,7 +210,7 @@ def onscreen():
     global button_4_option
 
     for i in range(len(asteroids)):
-        if (((asteroids[i].x > 0 - asteroids[i].width) and (asteroids[i].x < window.width)) and (asteroids[i].is_onscreen == 0)):
+        if (((asteroids[i].x > 0 - asteroids[i].width) and (asteroids[i].x < window.width)) and (asteroids[i].is_onscreen == 0) and (asteroids[i].destroid==0)):
             # Define que o asteróide entrou na tela nesse momento
             asteroids[i].is_onscreen = 1
             # Sortea a opção que vai aparecer em cada botão
@@ -261,6 +261,8 @@ def spawn_asteroid():
         asteroid.exist = 1
         # Define se o asteroide está na tela ou não (0 -> Não está \ 1 -> Está)
         asteroid.is_onscreen = 0
+        # Definir se foi destruido
+        asteroid.destroid = 0
         # Coloca o asteroide recém criado na lista
         asteroids[i] = asteroid
         # Coloca a equação recém criada na lista
@@ -298,6 +300,72 @@ def show_options():
             text_button_4.center = (asw4.x + asw4.width/2, asw4.y + asw4.height/2)
             screen.blit(grouping_button_4, (asw4.x + asw4.width/2 - text_button_4.width/2 , asw4.y + asw4.height/2 - text_button_4.height/2))
 
+def click():
+    if mouse.is_over_object (asw1) and mouse.is_button_pressed(1) :
+        for j in range(len(asteroids)):
+            if  asteroids[j].is_onscreen==1:  
+                if equations_options[j][button_1_option]== equations_options[j][3]:           
+                    #soma ponto
+                    #tira o asteroide
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+                    
+                else:
+                    #tira o asteroid
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+                    
+    if mouse.is_over_object (asw2) and mouse.is_button_pressed(1) :
+        for j in range(len(asteroids)):
+            if  asteroids[j].is_onscreen==1:  
+                if equations_options[j][button_2_option]== equations_options[j][3]:           
+                    #soma ponto
+                    #tira o asteroide
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+                    
+                else:
+                    #tira o asteroid
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+                    
+    if mouse.is_over_object (asw3) and mouse.is_button_pressed(1) :
+        for j in range(len(asteroids)):
+            if  asteroids[j].is_onscreen==1:  
+                if equations_options[j][button_3_option]== equations_options[j][3]:           
+                    #soma ponto
+                    #tira o asteroide
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+                    
+                else:
+                    #tira o asteroid
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+                    
+    if mouse.is_over_object (asw4) and mouse.is_button_pressed(1) :
+        for j in range(len(asteroids)):
+            if  asteroids[j].is_onscreen==1:  
+                if equations_options[j][button_4_option]== equations_options[j][3]:           
+                    #soma ponto
+                    #tira o asteroide
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+                    
+                else:
+                    #tira o asteroid
+                    asteroids[j].exist=0
+                    asteroids[j].is_onscreen=0
+                    asteroids[j].destroid=1
+
+
 
 def restart():
     """
@@ -306,6 +374,9 @@ def restart():
     # Apaga tudo na lista de asteroides
     asteroids.clear()
 
+    # Apagar tudo na lista de equações
+    equations_options.clear()
+    equations_strings.clear()
     # Cria de novo todos os asteroids
     spawn_asteroid()
 
@@ -374,6 +445,7 @@ while True:
 
         show_options()
 
+        click()
         
         exit_race()
 

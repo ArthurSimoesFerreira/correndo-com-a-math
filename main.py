@@ -128,7 +128,7 @@ button_4_option = 0
 asteroid_image = "assets\\asteroid.png"
 # Velocidade do Asteróide
 asteroid_speed = 70
-# Tamanho do asteróide
+# Tamanho da lista de asteróides
 asteroid_length = 10
 # Lista de asteróides
 asteroids = []
@@ -136,6 +136,14 @@ asteroids = []
 equations_strings = []
 # Lista de opções de respostas (A equations_options[_][4] é sempre a correta)
 equations_options = []
+
+# Linha de Chegada
+finish_line = Sprite("assets\\finish_line.png")
+# Posição inicial da linha de chegada
+finish_line.set_position(window_width, 0)
+
+# O GANHADOR (1 -> Jogador   0 -> Aliens)
+winner = 1
 
 # Fonte
 fonte = pygame.font.SysFont('ariel', 50, True, False)
@@ -269,6 +277,34 @@ def spawn_asteroid():
         asteroids[i] = asteroid
         # Coloca a equação recém criada na lista
         equations_strings[i] = current_equation
+
+
+def finish_line_movement():
+    """
+    Função que move e desenha a linha de chegada
+    ela também verifica de a nave chegou na linha de chegada
+    """
+    global finish_line
+    global GAME_STATE
+    global winner
+
+    # Se o último asteróide tiver passado da nave
+    if asteroids[asteroid_length - 1].x <= ship_math.x:
+        # Desenhar a linha 
+        finish_line.draw()
+        # Mover a linha
+        finish_line.move_x(asteroid_speed * -1 * window.delta_time() * DIFFICULTY)
+
+        # Se a nave do jogador ultrapassar a linha de chegada
+        if (ship_math.x + ship_math.width) > (finish_line.x + finish_line.width):
+            # Ganhador é o jogador
+            winner = 1
+            GAME_STATE = 3
+        # Se a nave de um dos aliens ultrapassar a linha de chegada
+        elif (ship_alien_1.x + ship_alien_1.width) > (finish_line.x + finish_line.width) or (ship_alien_2.x + ship_alien_2.width) > (finish_line.x + finish_line.width):
+            # Ganhador é o alien
+            winner = 0
+            GAME_STATE = 3
 
 
 def show_options():
@@ -444,7 +480,10 @@ while True:
         ship_alien_1.x=ship_alien_1.x + ship_alien_1.speed*(window.delta_time())
         ship_alien_2.x=ship_alien_2.x + ship_alien_2.speed*(window.delta_time())
 
+        finish_line_movement()
+        
         onscreen()
+
         draw(ship_math, ship_alien_1, ship_alien_2, score_panel, asw1, asw2, asw3, asw4, asteroids, asteroid_length, equations_strings, window)
 
         show_options()

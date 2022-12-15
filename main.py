@@ -50,6 +50,11 @@ background_race_2 = GameImage("assets\\background_space_reversed.png")
 background_race_1.x = 0
 background_race_2.x = window_width
 
+# Fundo Preto
+background_black = Sprite("assets\\black_background.png")
+background_black.x = 0
+background_black.y = 0
+
 # Velocidade de rolagem
 background_roll_speed = 60
 
@@ -89,14 +94,14 @@ ship_alien_1 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_1.x = 0
 ship_alien_1.y = window_height*3/4 - ship_alien_1.height/2 - 30
 # Velocidade da nave alien 1
-ship_alien_1.speed = 4
+ship_alien_1.speed = 3.01
 
 # Nave Alienígena 2
 ship_alien_2 = Sprite("assets\\ship_alien.png", 1)
 ship_alien_2.x = 0
 ship_alien_2.y = window_height/4 - ship_alien_2.height/2 - 30
 # Velocidade da nave alien 2
-ship_alien_2.speed = 4
+ship_alien_2.speed = 3.01
 
 # Painel De Pontos
 score_panel = Sprite("assets\\score_panel.png")
@@ -147,8 +152,15 @@ finish_line = Sprite("assets\\finish_line.png")
 # Posição inicial da linha de chegada
 finish_line.set_position(window_width, 0)
 
+# Imagem e texto finais
+final_image = 0
+final_text = 0
+
 # O GANHADOR (1 -> Jogador   0 -> Aliens)
 winner = 1
+
+# Timer Transition
+timer = 0
 
 # Fonte
 fonte = pygame.font.SysFont('ariel', 50, True, False)
@@ -305,11 +317,13 @@ def finish_line_movement():
             # Ganhador é o jogador
             winner = 1
             GAME_STATE = 3
+            create_final()
         # Se a nave de um dos aliens ultrapassar a linha de chegada
         elif (ship_alien_1.x + ship_alien_1.width) > (finish_line.x + finish_line.width) or (ship_alien_2.x + ship_alien_2.width) > (finish_line.x + finish_line.width):
             # Ganhador é o alien
             winner = 0
             GAME_STATE = 3
+            create_final()
 
 
 def show_options():
@@ -463,129 +477,22 @@ def click():
 
 
 # Tela de transição (3, 2, 1) ==> falta botar o 3,2,1 e fazer de fato funcionar (tem algo dando errado com os sprites)
-def transition():
-    global GAME_STATE
-
-    window.set_background_color((0,0,0))
-
-    timer = 0
-
-    which = 0
-
-    while (which <= 37):
-        """
-        # Essa foi minha tentativa falha de resumir esse tanto de sprites, mas como não funcionou tive que escrever aquilo tudo - pra não funcionar tbm kk-
-
-        background_sprite = "'assets\\\space_jump-"+str(which)+".png'"
-        background = Sprite(background_sprite)
-        background.x=0
-        background.y=0
-        background.draw()
-        timer+=window.delta_time()
-        if (timer >=0.5):
-            which+=1
-            timer=0
-        
-        """
-    
-        if which==0:
-            background_sprite = Sprite("assets\\space_jump-0.png", frames=1)
-        if which==1:
-            background_sprite = Sprite("assets\\space_jump-1.png", frames=1)
-        if which==2:
-            background_sprite = Sprite("assets\\space_jump-2.png", frames=1)
-        if which==3:
-            background_sprite = Sprite("assets\\space_jump-3.png", frames=1)
-        if which==4:
-            background_sprite = Sprite("assets\\space_jump-4.png", frames=1)
-        if which==5:
-            background_sprite = Sprite("assets\\space_jump-5.png", frames=1)
-        if which==6:
-            background_sprite = Sprite("assets\\space_jump-6.png", frames=1)
-        if which==7:
-            background_sprite = Sprite("assets\\space_jump-7.png", frames=1)
-        if which==8:
-            background_sprite = Sprite("assets\\space_jump-8.png", frames=1)
-        if which==9:
-            background_sprite = Sprite("assets\\space_jump-9.png", frames=1)
-        if which==10:
-            background_sprite = Sprite("assets\\space_jump-10.png", frames=1)
-        if which==11:
-            background_sprite = Sprite("assets\\space_jump-11.png", frames=1)
-        if which==12:
-            background_sprite = Sprite("assets\\space_jump-12.png", frames=1)
-        if which==13:
-            background_sprite = Sprite("assets\\space_jump-13.png", frames=1)
-        if which==14:
-            background_sprite = Sprite("assets\\space_jump-14.png", frames=1)
-        if which==15:
-            background_sprite = Sprite("assets\\space_jump-15.png", frames=1)
-        if which==16:
-            background_sprite = Sprite("assets\\space_jump-16.png", frames=1)
-        if which==17:
-            background_sprite = Sprite("assets\\space_jump-17.png", frames=1)
-        if which==18:
-            background_sprite = Sprite("assets\\space_jump-18.png", frames=1)
-        if which==19:
-            background_sprite = Sprite("assets\\space_jump-19.png", frames=1)
-        if which==20:
-            background_sprite = Sprite("assets\\space_jump-20.png", frames=1)
-        if which==21:
-            background_sprite = Sprite("assets\\space_jump-21.png", frames=1)
-        if which==22:
-            background_sprite = Sprite("assets\\space_jump-22.png", frames=1)
-        if which==23:
-            background_sprite = Sprite("assets\\space_jump-23.png", frames=1)
-        if which==24:
-            background_sprite = Sprite("assets\\space_jump-24.png", frames=1)
-        if which==25:
-            background_sprite = Sprite("assets\\space_jump-25.png", frames=1)
-        if which==26:
-            background_sprite = Sprite("assets\\space_jump-26.png", frames=1)
-        if which==27:
-            background_sprite = Sprite("assets\\space_jump-27.png", frames=1)
-        if which==28:
-            background_sprite = Sprite("assets\\space_jump-28.png", frames=1)
-        if which==29:
-            background_sprite = Sprite("assets\\space_jump-29.png", frames=1)
-        if which==30:
-            background_sprite = Sprite("assets\\space_jump-30.png", frames=1)
-        if which==31:
-            background_sprite = Sprite("assets\\space_jump-31.png", frames=1)
-        if which==32:
-            background_sprite = Sprite("assets\\space_jump-32.png", frames=1)
-        if which==33:
-            background_sprite = Sprite("assets\\space_jump-33.png", frames=1)
-        if which==34:
-            background_sprite = Sprite("assets\\space_jump-34.png", frames=1)
-        if which==35:
-            background_sprite = Sprite("assets\\space_jump-35.png", frames=1)
-        if which==36:
-            background_sprite = Sprite("assets\\space_jump-36.png", frames=1)
-        if which==37:
-            background_sprite = Sprite("assets\\space_jump-37.png", frames=1)
-
-        background_sprite.x = 0
-        background_sprite.y = 0
-        background_sprite.draw()
-        timer += window.delta_time()
-
-        if (timer >= 0.5):
-            which += 1
-            timer = 0
-
-    GAME_STATE = 2
-    restart()
-            
-
-
-
 def restart():
     """
     Reinicia o Jogo 
     """
     #reinicia a contagem de pontos
     ship_math.score = 0 
+
+    # reinicia as velocidades
+    ship_math.speed = 3
+    ship_alien_1.speed = 3.01
+    ship_alien_2.speed = 3.01
+
+    # reinicia as posições
+    ship_math.x = 0
+    ship_alien_1.x = 0
+    ship_alien_2.x = 0
 
     # Apaga tudo na lista de asteroides
     asteroids.clear()
@@ -595,6 +502,370 @@ def restart():
     equations_strings.clear()
     # Cria de novo todos os asteroids
     spawn_asteroid()
+
+
+def transition():
+    global GAME_STATE
+    global timer
+
+    window.set_background_color((0,0,0))
+
+    if (timer < 30):
+        if (timer>=0.0) and (timer<0.3):
+            background_sprite = Sprite("assets\space_jump-0.png",1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        if (timer>=0.3) and (timer<0.6):
+            background_sprite = Sprite("assets\space_jump-0.png",1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        if (timer>=0.6) and (timer<0.9):
+            background_sprite = Sprite("assets\space_jump-1.png",1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=0.9) and (timer<1.2):
+            background_sprite = Sprite("assets\space_jump-2.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=1.2) and (timer<1.5):
+            background_sprite = Sprite("assets\space_jump-3.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=1.5) and (timer<1.8):
+            background_sprite = Sprite("assets\space_jump-4.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=1.8) and (timer<2.1):
+            background_sprite = Sprite("assets\space_jump-5.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=2.1) and (timer<2.4):
+            background_sprite = Sprite("assets\space_jump-6.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=2.4) and (timer<2.7):
+            background_sprite = Sprite("assets\space_jump-7.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=2.7) and (timer<3):
+            background_sprite = Sprite("assets\space_jump-8.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=3) and (timer<3.3):
+            background_sprite = Sprite("assets\space_jump-9.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=3.3) and (timer<3.6):
+            background_sprite = Sprite("assets\space_jump-10.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=3.6) and (timer<3.9):
+            background_sprite = Sprite("assets\space_jump-11.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=3.9) and (timer<4.2):
+            background_sprite = Sprite("assets\space_jump-12.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=4.2) and (timer<4.5):
+            background_sprite = Sprite("assets\space_jump-13.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=4.5) and (timer<4.8):
+            background_sprite = Sprite("assets\space_jump-14.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=4.8) and (timer<5.1):
+            background_sprite = Sprite("assets\space_jump-15.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=5.1) and (timer<5.4):
+            background_sprite = Sprite("assets\space_jump-16.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=5.4) and (timer<5.7):
+            background_sprite = Sprite("assets\space_jump-17.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=5.7) and (timer<6.0):
+            background_sprite = Sprite("assets\space_jump-18.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=6.0) and (timer<6.3):
+            background_sprite = Sprite("assets\space_jump-19.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=6.3) and (timer<6.6):
+            background_sprite = Sprite("assets\space_jump-20.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=6.6) and (timer<6.9):
+            background_sprite = Sprite("assets\space_jump-21.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=6.9) and (timer<7.2):
+            background_sprite = Sprite("assets\space_jump-22.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=7.2) and (timer<7.5):
+            background_sprite = Sprite("assets\space_jump-23.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=7.5) and (timer<7.8):
+            background_sprite = Sprite("assets\space_jump-24.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=7.8) and (timer<8.1):
+            background_sprite = Sprite("assets\space_jump-25.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=8.1) and (timer<8.4):
+            background_sprite = Sprite("assets\space_jump-26.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=8.4) and (timer<8.7):
+            background_sprite = Sprite("assets\space_jump-27.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=8.7) and (timer<9.0):
+            background_sprite = Sprite("assets\space_jump-28.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=9) and (timer<9.3):
+            background_sprite = Sprite("assets\space_jump-29.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=9.3) and (timer<9.6):
+            background_sprite = Sprite("assets\space_jump-30.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=9.6) and (timer<10.2):
+            background_sprite = Sprite("assets\space_jump-31.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=10.2) and (timer<10.5):
+            background_sprite = Sprite("assets\space_jump-32.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=10.5) and (timer<10.8):
+            background_sprite = Sprite("assets\space_jump-33.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=10.8) and (timer<11.1):
+            background_sprite = Sprite("assets\space_jump-34.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=11.1) and (timer<11.4):
+            background_sprite = Sprite("assets\space_jump-35.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=11.4) and (timer<11.7):
+            background_sprite = Sprite("assets\space_jump-36.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=11.7) and (timer<12.0):
+            background_sprite = Sprite("assets\space_jump-37.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=12) and (timer<12.3):
+            background_sprite = Sprite("assets\space_jump-0.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=12.3) and (timer<12.6):
+            background_sprite = Sprite("assets\space_jump-1.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=12.6) and (timer<13.2):
+            background_sprite = Sprite("assets\space_jump-2.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=13.2) and (timer<13.5):
+            background_sprite = Sprite("assets\space_jump-3.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=13.5) and (timer<13.8):
+            background_sprite = Sprite("assets\space_jump-4.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=13.8) and (timer<14.1):
+            background_sprite = Sprite("assets\space_jump-5.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=14.4) and (timer<14.7):
+            background_sprite = Sprite("assets\space_jump-6.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=14.7) and (timer<15.0):
+            background_sprite = Sprite("assets\space_jump-7.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=15) and (timer<15.3):
+            background_sprite = Sprite("assets\space_jump-8.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=15.3) and (timer<15.6):
+            background_sprite = Sprite("assets\space_jump-9.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=15.6) and (timer<16.2):
+            background_sprite = Sprite("assets\space_jump-10.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=16.2) and (timer<16.5):
+            background_sprite = Sprite("assets\space_jump-11.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=16.5) and (timer<16.8):
+            background_sprite = Sprite("assets\space_jump-12.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=16.8) and (timer<17.1):
+            background_sprite = Sprite("assets\space_jump-13.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=17.4) and (timer<17.7):
+            background_sprite = Sprite("assets\space_jump-14.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=17.7) and (timer<18.0):
+            background_sprite = Sprite("assets\space_jump-15.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=18) and (timer<18.3):
+            background_sprite = Sprite("assets\space_jump-16.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=18.3) and (timer<18.6):
+            background_sprite = Sprite("assets\space_jump-17.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=18.6) and (timer<19.2):
+            background_sprite = Sprite("assets\space_jump-18.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=19.2) and (timer<19.5):
+            background_sprite = Sprite("assets\space_jump-19.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=19.5) and (timer<19.8):
+            background_sprite = Sprite("assets\space_jump-20.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+        elif (timer>=19.8) and (timer<20.1):
+            background_sprite = Sprite("assets\space_jump-21.png", 1)
+            background_sprite.x = 0
+            background_sprite.y = 0
+            background_sprite.draw()
+
+        timer += 0.04
+    
+    else:
+        GAME_STATE = 2
+        timer = 0
+        restart()
+            
+
+def create_final():
+    """
+    Escolha da imagem final e do texto final
+    """
+
+    global final_text
+    global final_image
+    
+    if winner == 0:
+        final_text = Sprite("assets\\text_ending_bad.png")
+        final_image = Sprite("assets\\photo_ending_bad.png")
+
+    elif (winner == 1) and (ship_math.score <= 6):
+        final_text = Sprite("assets\\text_ending_ok.png")
+        final_image = Sprite("assets\\photo_ending_ok.png")
+
+    elif (winner == 1) and (ship_math.score <= 9):
+        final_text = Sprite("assets\\text_ending_nice.png")
+        final_image = Sprite("assets\\photo_ending_nice.png")
+
+    final_text.x = window_width/2 - final_text.width/2
+    final_text.y = window_height
+
+    final_image.x = 0
+    final_image.y = 0
+
+def show_final():
+    """
+    Mostrar o final
+    """
+    global GAME_STATE
+
+
+    if ((final_text.y + final_text.height) >= 0):
+        final_text.move_y(-0.2)
+    
+    if ((final_text.y + final_text.height) < 0):
+        GAME_STATE = 0
+    
+    final_image.draw()
+    final_text.draw()
 
 
 def exit_race():
@@ -634,6 +905,7 @@ def menu():
 while True:
 
     if GAME_STATE == 0:
+        background_black.draw()
         background_menu.draw()
         menu()
 
@@ -670,6 +942,11 @@ while True:
         window.draw_text(str(ship_math.score), scorex, scorey, size=50, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         
         exit_race()
+
+
+    elif GAME_STATE == 3:
+
+        show_final()
 
     # Atualizo a Janela
     window.update()

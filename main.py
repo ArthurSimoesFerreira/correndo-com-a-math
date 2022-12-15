@@ -103,6 +103,11 @@ score_panel = Sprite("assets\\score_panel.png")
 score_panel.x = window_width/2 - score_panel.width/2
 score_panel.y = window_height - score_panel.height
 
+# Pontuação
+score=0
+scorex=score_panel.x + (score_panel.width/2)
+scorey= window_height - score_panel.height + (score_panel.height/4)
+
 # Botões de Resposta
 asw1 = Sprite("assets\\asw.png")
 tinyspace= (((window_width/2 - score_panel.width/2)/2) - asw1.width)/2
@@ -338,20 +343,30 @@ def show_options():
             text_button_4.center = (asw4.x + asw4.width/2, asw4.y + asw4.height/2)
             screen.blit(grouping_button_4, (asw4.x + asw4.width/2 - text_button_4.width/2 , asw4.y + asw4.height/2 - text_button_4.height/2))
 
-def click():
+
+def click(points):
+    
     if mouse.is_over_object (asw1) and mouse.is_button_pressed(1) :
         for j in range(len(asteroids)):
             if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_1_option]== equations_options[j][3]:           
                     #soma ponto
+                    points +=1
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade da nave
-                    pass
+                    ship_math.speed=ship_math.speed*1.1
+                    ship_alien_1.speed=ship_alien_1.speed*0.9
+                    ship_alien_2.speed=ship_alien_2.speed*0.9
                     
                 else:
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade dos aliens
-                    pass
+                    ship_math.speed=ship_math.speed*0.9
+                    ship_alien_1.speed=ship_alien_1.speed*1.1
+                    ship_alien_2.speed=ship_alien_2.speed*1.1
+
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
                 asteroids[j].destroyed=1
@@ -360,14 +375,23 @@ def click():
             if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_2_option]== equations_options[j][3]:           
                     #soma ponto
+                    points +=1
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade da nave
-                    pass
+                    ship_math.speed=ship_math.speed*1.1
+                    ship_alien_1.speed=ship_alien_1.speed*0.9
+                    ship_alien_2.speed=ship_alien_2.speed*0.9
+                    
                     
                 else:
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade dos aliens
-                    pass
+                    ship_math.speed=ship_math.speed*0.9
+                    ship_alien_1.speed=ship_alien_1.speed*1.1
+                    ship_alien_2.speed=ship_alien_2.speed*1.1
+                    
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
                 asteroids[j].destroyed=1
@@ -377,15 +401,23 @@ def click():
             if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_3_option]== equations_options[j][3]:           
                     #soma ponto
+                    points +=1
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade da nave
+                    ship_math.speed=ship_math.speed*1.1
+                    ship_alien_1.speed=ship_alien_1.speed*0.9
+                    ship_alien_2.speed=ship_alien_2.speed*0.9
 
-                    pass
                     
                 else:
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade dos aliens
-                    pass
+                    ship_math.speed=ship_math.speed*0.9
+                    ship_alien_1.speed=ship_alien_1.speed*1.1
+                    ship_alien_2.speed=ship_alien_2.speed*1.1
+                    
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
                 asteroids[j].destroyed=1
@@ -394,16 +426,87 @@ def click():
             if asteroids[j].is_onscreen==1:  
                 if equations_options[j][button_4_option]== equations_options[j][3]:           
                     #soma ponto
+                    points +=1
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade da nave
-                    pass
+                    ship_math.speed=ship_math.speed*1.1
+                    ship_alien_1.speed=ship_alien_1.speed*0.9
+                    ship_alien_2.speed=ship_alien_2.speed*0.9
+                    
                 else:
                     #tira o asteroid
+                    asteroids[j].exist=0
                     #aumenta a velocidade dos aliens
-                    pass
+                    ship_math.speed=ship_math.speed*0.9
+                    ship_alien_1.speed=ship_alien_1.speed*1.1
+                    ship_alien_2.speed=ship_alien_2.speed*1.1
+                    
                 asteroids[j].exist=0
                 asteroids[j].is_onscreen=0
                 asteroids[j].destroyed=1
+
+    return(points)
+
+def transition():
+    global GAME_STATE
+    while True:
+        window.set_background_color((0,0,0))
+        timer = 0
+        which=0
+
+        while (which<37):
+            background_sprite = "'assets\\space_jump-"+str(which)+".png'"
+            background = Sprite(background_sprite)
+            background.x=0
+            background.y=0
+            background.draw()
+            timer+=window.delta_time()
+            if (timer >=0.5):
+                which+=1
+                timer=0
+        """
+        window = Sprite("assets\\space_jump-1.png", frames=1)
+        window = Sprite("assets\\space_jump-2.png", frames=1)
+        window = Sprite("assets\\space_jump-3.png", frames=1)
+        window = Sprite("assets\\space_jump-4.png", frames=1)
+        window = Sprite("assets\\space_jump-5.png", frames=1)
+        window = Sprite("assets\\space_jump-6.png", frames=1)
+        window = Sprite("assets\\space_jump-7.png", frames=1)
+        window = Sprite("assets\\space_jump-8.png", frames=1)
+        window = Sprite("assets\\space_jump-9.png", frames=1)
+        window = Sprite("assets\\space_jump-10.png", frames=1)
+        window = Sprite("assets\\space_jump-11.png", frames=1)
+        window = Sprite("assets\\space_jump-12.png", frames=1)
+        window = Sprite("assets\\space_jump-13.png", frames=1)
+        window = Sprite("assets\\space_jump-14.png", frames=1)
+        window = Sprite("assets\\space_jump-15.png", frames=1)
+        window = Sprite("assets\\space_jump-16.png", frames=1)
+        window = Sprite("assets\\space_jump-17.png", frames=1)
+        window = Sprite("assets\\space_jump-18.png", frames=1)
+        window = Sprite("assets\\space_jump-19.png", frames=1)
+        window = Sprite("assets\\space_jump-20.png", frames=1)
+        window = Sprite("assets\\space_jump-21.png", frames=1)
+        window = Sprite("assets\\space_jump-22.png", frames=1)
+        window = Sprite("assets\\space_jump-23.png", frames=1)
+        window = Sprite("assets\\space_jump-24.png", frames=1)
+        window = Sprite("assets\\space_jump-25.png", frames=1)
+        window = Sprite("assets\\space_jump-26.png", frames=1)
+        window = Sprite("assets\\space_jump-27.png", frames=1)
+        Sprite("assets\\space_jump-28.png", frames=1)
+        Sprite("assets\\space_jump-29.png", frames=1)
+        Sprite("assets\\space_jump-30.png", frames=1)
+        Sprite("assets\\space_jump-31.png", frames=1)
+        Sprite("assets\\space_jump-32.png", frames=1)
+        Sprite("assets\\space_jump-33.png", frames=1)
+        Sprite("assets\\space_jump-34.png", frames=1)
+        Sprite("assets\\space_jump-35.png", frames=1)
+        Sprite("assets\\space_jump-36.png", frames=1)
+        Sprite("assets\\space_jump-37.png", frames=1)
+        """
+
+        GAME_STATE = 2
+            
 
 
 
@@ -411,6 +514,9 @@ def restart():
     """
     Reinicia o Jogo 
     """
+    #reinicia a contagem de pontos
+    points=0 
+
     # Apaga tudo na lista de asteroides
     asteroids.clear()
 
@@ -447,7 +553,7 @@ def menu():
 
     # Apertar o botão para começar o jogo
     if mouse.is_over_object (button_start) and mouse.is_button_pressed(1) :
-        GAME_STATE = 2
+        GAME_STATE = 1
         restart()
 
     # ESC para fechar o jogo
@@ -464,7 +570,7 @@ while True:
 
 
     elif GAME_STATE == 1:
-        pass
+        transition()
 
 
     # Se não for a primeira vez, quer dizer que a partida ainda
@@ -488,7 +594,8 @@ while True:
 
         show_options()
 
-        click()
+        score=click(score)
+        window.draw_text(str(score), scorex, scorey, size=50, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         
         exit_race()
 

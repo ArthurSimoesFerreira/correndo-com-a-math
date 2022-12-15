@@ -448,6 +448,7 @@ def click(points):
 
     return(points)
 
+# Tela de transição (3, 2, 1) ==> falta botar o 3,2,1 e fazer de fato funcionar (tem algo dando errado com os sprites)
 def transition():
     global GAME_STATE
     while True:
@@ -456,7 +457,10 @@ def transition():
         which=0
 
         while (which<37):
-            background_sprite = "'assets\\space_jump-"+str(which)+".png'"
+            """
+            # Essa foi minha tentativa falha de resumir esse tanto de sprites, mas como não funcionou tive que escrever aquilo tudo - pra não funcionar tbm kk-
+
+            background_sprite = "'assets\\\space_jump-"+str(which)+".png'"
             background = Sprite(background_sprite)
             background.x=0
             background.y=0
@@ -465,45 +469,96 @@ def transition():
             if (timer >=0.5):
                 which+=1
                 timer=0
-        """
-        window = Sprite("assets\\space_jump-1.png", frames=1)
-        window = Sprite("assets\\space_jump-2.png", frames=1)
-        window = Sprite("assets\\space_jump-3.png", frames=1)
-        window = Sprite("assets\\space_jump-4.png", frames=1)
-        window = Sprite("assets\\space_jump-5.png", frames=1)
-        window = Sprite("assets\\space_jump-6.png", frames=1)
-        window = Sprite("assets\\space_jump-7.png", frames=1)
-        window = Sprite("assets\\space_jump-8.png", frames=1)
-        window = Sprite("assets\\space_jump-9.png", frames=1)
-        window = Sprite("assets\\space_jump-10.png", frames=1)
-        window = Sprite("assets\\space_jump-11.png", frames=1)
-        window = Sprite("assets\\space_jump-12.png", frames=1)
-        window = Sprite("assets\\space_jump-13.png", frames=1)
-        window = Sprite("assets\\space_jump-14.png", frames=1)
-        window = Sprite("assets\\space_jump-15.png", frames=1)
-        window = Sprite("assets\\space_jump-16.png", frames=1)
-        window = Sprite("assets\\space_jump-17.png", frames=1)
-        window = Sprite("assets\\space_jump-18.png", frames=1)
-        window = Sprite("assets\\space_jump-19.png", frames=1)
-        window = Sprite("assets\\space_jump-20.png", frames=1)
-        window = Sprite("assets\\space_jump-21.png", frames=1)
-        window = Sprite("assets\\space_jump-22.png", frames=1)
-        window = Sprite("assets\\space_jump-23.png", frames=1)
-        window = Sprite("assets\\space_jump-24.png", frames=1)
-        window = Sprite("assets\\space_jump-25.png", frames=1)
-        window = Sprite("assets\\space_jump-26.png", frames=1)
-        window = Sprite("assets\\space_jump-27.png", frames=1)
-        Sprite("assets\\space_jump-28.png", frames=1)
-        Sprite("assets\\space_jump-29.png", frames=1)
-        Sprite("assets\\space_jump-30.png", frames=1)
-        Sprite("assets\\space_jump-31.png", frames=1)
-        Sprite("assets\\space_jump-32.png", frames=1)
-        Sprite("assets\\space_jump-33.png", frames=1)
-        Sprite("assets\\space_jump-34.png", frames=1)
-        Sprite("assets\\space_jump-35.png", frames=1)
-        Sprite("assets\\space_jump-36.png", frames=1)
-        Sprite("assets\\space_jump-37.png", frames=1)
-        """
+            
+            """
+        
+            if which==0:
+                background_sprite = Sprite("assets\\space_jump-0.png", frames=1)
+            if which==1:
+                background_sprite = Sprite("assets\\space_jump-1.png", frames=1)
+            if which==2:
+                background_sprite = Sprite("assets\\space_jump-2.png", frames=1)
+            if which==3:
+                background_sprite = Sprite("assets\\space_jump-3.png", frames=1)
+            if which==4:
+                background_sprite = Sprite("assets\\space_jump-4.png", frames=1)
+            if which==5:
+                background_sprite = Sprite("assets\\space_jump-5.png", frames=1)
+            if which==6:
+                background_sprite = Sprite("assets\\space_jump-6.png", frames=1)
+            if which==7:
+                background_sprite = Sprite("assets\\space_jump-7.png", frames=1)
+            if which==8:
+                background_sprite = Sprite("assets\\space_jump-8.png", frames=1)
+            if which==9:
+                background_sprite = Sprite("assets\\space_jump-9.png", frames=1)
+            if which==10:
+                background_sprite = Sprite("assets\\space_jump-10.png", frames=1)
+            if which==11:
+                background_sprite = Sprite("assets\\space_jump-11.png", frames=1)
+            if which==12:
+                background_sprite = Sprite("assets\\space_jump-12.png", frames=1)
+            if which==13:
+                background_sprite = Sprite("assets\\space_jump-13.png", frames=1)
+            if which==14:
+                background_sprite = Sprite("assets\\space_jump-14.png", frames=1)
+            if which==15:
+                background_sprite = Sprite("assets\\space_jump-15.png", frames=1)
+            if which==16:
+                background_sprite = Sprite("assets\\space_jump-16.png", frames=1)
+            if which==17:
+                background_sprite = Sprite("assets\\space_jump-17.png", frames=1)
+            if which==18:
+                background_sprite = Sprite("assets\\space_jump-18.png", frames=1)
+            if which==19:
+                background_sprite = Sprite("assets\\space_jump-19.png", frames=1)
+            if which==20:
+                background_sprite = Sprite("assets\\space_jump-20.png", frames=1)
+            if which==21:
+                background_sprite = Sprite("assets\\space_jump-21.png", frames=1)
+            if which==22:
+                background_sprite = Sprite("assets\\space_jump-22.png", frames=1)
+            if which==23:
+                background_sprite = Sprite("assets\\space_jump-23.png", frames=1)
+            if which==24:
+                background_sprite = Sprite("assets\\space_jump-24.png", frames=1)
+            if which==25:
+                background_sprite = Sprite("assets\\space_jump-25.png", frames=1)
+            if which==26:
+                background_sprite = Sprite("assets\\space_jump-26.png", frames=1)
+            if which==27:
+                background_sprite = Sprite("assets\\space_jump-27.png", frames=1)
+            if which==28:
+                background_sprite = Sprite("assets\\space_jump-28.png", frames=1)
+            if which==29:
+                background_sprite = Sprite("assets\\space_jump-29.png", frames=1)
+            if which==30:
+                background_sprite = Sprite("assets\\space_jump-30.png", frames=1)
+            if which==31:
+                background_sprite = Sprite("assets\\space_jump-31.png", frames=1)
+            if which==32:
+                background_sprite = Sprite("assets\\space_jump-32.png", frames=1)
+            if which==33:
+                background_sprite = Sprite("assets\\space_jump-33.png", frames=1)
+            if which==34:
+                background_sprite = Sprite("assets\\space_jump-34.png", frames=1)
+            if which==35:
+                background_sprite = Sprite("assets\\space_jump-35.png", frames=1)
+            if which==36:
+                background_sprite = Sprite("assets\\space_jump-36.png", frames=1)
+            if which==37:
+                background_sprite = Sprite("assets\\space_jump-37.png", frames=1)
+
+            background = Sprite(background_sprite)
+            background.x=0
+            background.y=0
+            background.draw()
+            timer+=window.delta_time()
+            if (timer >=0.5):
+                which+=1
+                timer=0
+
+        
 
         GAME_STATE = 2
             

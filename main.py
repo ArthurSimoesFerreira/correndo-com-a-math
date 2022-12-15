@@ -855,7 +855,8 @@ def show_final():
     """
     Mostrar o final
     """
-    global GAME_STATE
+    #reinicia a contagem de pontos
+    ship_math.score = 0 
 
 
     if ((final_text.y + final_text.height) >= 0):

@@ -504,6 +504,7 @@ def restart():
     ship_math.x = 0
     ship_alien_1.x = 0
     ship_alien_2.x = 0
+    finish_line.set_position(window_width, 0)
 
     # Apaga tudo na lista de asteroides
     asteroids.clear()

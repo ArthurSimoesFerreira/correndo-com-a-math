@@ -63,6 +63,11 @@ background_menu = Sprite("assets\\background_menu.png", 1)
 background_menu.x = window_width/2 - background_menu.width/2
 background_menu.y = window_height/2 - background_menu.height/2
 
+# Título do jogo
+title_game = Sprite("assets\\title_game.png")
+title_game.x = window_width/2 - title_game.width/2
+title_game.y = -10
+
 # Buttons
 button_start = Sprite("assets\\button_start.png",1)
 button_start.x = ((window_width)/2 - (button_start .width)/2)
@@ -953,6 +958,7 @@ def menu():
 
     global GAME_STATE
 
+    title_game.draw()
     story_panel.draw()
     #Text Story Panel draw
     window.draw_text(str(text1), 370, 170, size=23, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)

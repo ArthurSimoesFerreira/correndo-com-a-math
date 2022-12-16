@@ -825,7 +825,7 @@ def transition():
             background_sprite.y = 0
             background_sprite.draw()
 
-        timer += 0.04
+        timer += 0.08
     
     else:
         GAME_STATE = 2

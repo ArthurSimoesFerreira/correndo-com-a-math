@@ -529,96 +529,116 @@ def transition():
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         if (timer>=0.6) and (timer<0.9):
             background_sprite = Sprite("assets\space_jump-1.png",1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=0.9) and (timer<1.2):
             background_sprite = Sprite("assets\space_jump-2.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=1.2) and (timer<1.5):
             background_sprite = Sprite("assets\space_jump-3.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=1.5) and (timer<1.8):
             background_sprite = Sprite("assets\space_jump-4.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=1.8) and (timer<2.1):
             background_sprite = Sprite("assets\space_jump-5.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=2.1) and (timer<2.4):
             background_sprite = Sprite("assets\space_jump-6.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=2.4) and (timer<2.7):
             background_sprite = Sprite("assets\space_jump-7.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=2.7) and (timer<3):
             background_sprite = Sprite("assets\space_jump-8.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=3) and (timer<3.3):
             background_sprite = Sprite("assets\space_jump-9.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=3.3) and (timer<3.6):
             background_sprite = Sprite("assets\space_jump-10.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=3.6) and (timer<3.9):
             background_sprite = Sprite("assets\space_jump-11.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
+
         elif (timer>=3.9) and (timer<4.2):
             background_sprite = Sprite("assets\space_jump-12.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=4.2) and (timer<4.5):
             background_sprite = Sprite("assets\space_jump-13.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=4.5) and (timer<4.8):
             background_sprite = Sprite("assets\space_jump-14.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=4.8) and (timer<5.1):
             background_sprite = Sprite("assets\space_jump-15.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=5.1) and (timer<5.4):
             background_sprite = Sprite("assets\space_jump-16.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=5.4) and (timer<5.7):
             background_sprite = Sprite("assets\space_jump-17.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=5.7) and (timer<6.0):
             background_sprite = Sprite("assets\space_jump-18.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(3), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=6.0) and (timer<6.3):
             background_sprite = Sprite("assets\space_jump-19.png", 1)
             background_sprite.x = 0
@@ -629,96 +649,115 @@ def transition():
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=6.6) and (timer<6.9):
             background_sprite = Sprite("assets\space_jump-21.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=6.9) and (timer<7.2):
             background_sprite = Sprite("assets\space_jump-22.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=7.2) and (timer<7.5):
             background_sprite = Sprite("assets\space_jump-23.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=7.5) and (timer<7.8):
             background_sprite = Sprite("assets\space_jump-24.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=7.8) and (timer<8.1):
             background_sprite = Sprite("assets\space_jump-25.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=8.1) and (timer<8.4):
             background_sprite = Sprite("assets\space_jump-26.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=8.4) and (timer<8.7):
             background_sprite = Sprite("assets\space_jump-27.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=8.7) and (timer<9.0):
             background_sprite = Sprite("assets\space_jump-28.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=9) and (timer<9.3):
             background_sprite = Sprite("assets\space_jump-29.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=9.3) and (timer<9.6):
             background_sprite = Sprite("assets\space_jump-30.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=9.6) and (timer<10.2):
             background_sprite = Sprite("assets\space_jump-31.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=10.2) and (timer<10.5):
             background_sprite = Sprite("assets\space_jump-32.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=10.5) and (timer<10.8):
             background_sprite = Sprite("assets\space_jump-33.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=10.8) and (timer<11.1):
             background_sprite = Sprite("assets\space_jump-34.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=11.1) and (timer<11.4):
             background_sprite = Sprite("assets\space_jump-35.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=11.4) and (timer<11.7):
             background_sprite = Sprite("assets\space_jump-36.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=11.7) and (timer<12.0):
             background_sprite = Sprite("assets\space_jump-37.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=12) and (timer<12.3):
             background_sprite = Sprite("assets\space_jump-0.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(2), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=12.3) and (timer<12.6):
             background_sprite = Sprite("assets\space_jump-1.png", 1)
             background_sprite.x = 0
@@ -729,96 +768,115 @@ def transition():
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=12.9) and (timer<13.2):
             background_sprite = Sprite("assets\space_jump-3.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=13.2) and (timer<13.5):
             background_sprite = Sprite("assets\space_jump-4.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=13.5) and (timer<13.8):
             background_sprite = Sprite("assets\space_jump-5.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=13.8) and (timer<14.1):
             background_sprite = Sprite("assets\space_jump-6.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=14.1) and (timer<14.4):
             background_sprite = Sprite("assets\space_jump-7.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=14.4) and (timer<14.7):
             background_sprite = Sprite("assets\space_jump-8.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=14.7) and (timer<15):
             background_sprite = Sprite("assets\space_jump-9.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=15) and (timer<15.3):
             background_sprite = Sprite("assets\space_jump-10.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=15.3) and (timer<15.6):
             background_sprite = Sprite("assets\space_jump-11.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=15.6) and (timer<15.9):
             background_sprite = Sprite("assets\space_jump-12.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=15.9) and (timer<16.2):
             background_sprite = Sprite("assets\space_jump-13.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=16.2) and (timer<16.5):
             background_sprite = Sprite("assets\space_jump-14.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=16.5) and (timer<16.8):
             background_sprite = Sprite("assets\space_jump-15.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=16.8) and (timer<17.1):
             background_sprite = Sprite("assets\space_jump-16.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=17.1) and (timer<17.4):
             background_sprite = Sprite("assets\space_jump-17.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=17.4) and (timer<17.7):
             background_sprite = Sprite("assets\space_jump-18.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=17.7) and (timer<18):
             background_sprite = Sprite("assets\space_jump-19.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=18) and (timer<18.3):
             background_sprite = Sprite("assets\space_jump-20.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
+            window.draw_text(str(1), (window_width/2), (window_height/2), size=100, color=(173, 216, 230), font_name="Ariel", bold= False, italic= False)
         elif (timer>=18.3) and (timer<18.4):
             background_sprite = Sprite("assets\space_jump-21.png", 1)
             background_sprite.x = 0

@@ -1,1 +1,0 @@
-ship_math.score = 0

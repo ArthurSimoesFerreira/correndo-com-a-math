@@ -724,108 +724,108 @@ def transition():
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=12.6) and (timer<13.2):
+        elif (timer>=12.6) and (timer<12.9):
             background_sprite = Sprite("assets\space_jump-2.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=13.2) and (timer<13.5):
+        elif (timer>=12.9) and (timer<13.2):
             background_sprite = Sprite("assets\space_jump-3.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=13.5) and (timer<13.8):
+        elif (timer>=13.2) and (timer<13.5):
             background_sprite = Sprite("assets\space_jump-4.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=13.8) and (timer<14.1):
+        elif (timer>=13.5) and (timer<13.8):
             background_sprite = Sprite("assets\space_jump-5.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=14.4) and (timer<14.7):
+        elif (timer>=13.8) and (timer<14.1):
             background_sprite = Sprite("assets\space_jump-6.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=14.7) and (timer<15.0):
+        elif (timer>=14.1) and (timer<14.4):
             background_sprite = Sprite("assets\space_jump-7.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=15) and (timer<15.3):
+        elif (timer>=14.4) and (timer<14.7):
             background_sprite = Sprite("assets\space_jump-8.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=15.3) and (timer<15.6):
+        elif (timer>=14.7) and (timer<15):
             background_sprite = Sprite("assets\space_jump-9.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=15.6) and (timer<16.2):
+        elif (timer>=15) and (timer<15.3):
             background_sprite = Sprite("assets\space_jump-10.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=16.2) and (timer<16.5):
+        elif (timer>=15.3) and (timer<15.6):
             background_sprite = Sprite("assets\space_jump-11.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=16.5) and (timer<16.8):
+        elif (timer>=15.6) and (timer<15.9):
             background_sprite = Sprite("assets\space_jump-12.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=16.8) and (timer<17.1):
+        elif (timer>=15.9) and (timer<16.2):
             background_sprite = Sprite("assets\space_jump-13.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=17.4) and (timer<17.7):
+        elif (timer>=16.2) and (timer<16.5):
             background_sprite = Sprite("assets\space_jump-14.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=17.7) and (timer<18.0):
+        elif (timer>=16.5) and (timer<16.8):
             background_sprite = Sprite("assets\space_jump-15.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=18) and (timer<18.3):
+        elif (timer>=16.8) and (timer<17.1):
             background_sprite = Sprite("assets\space_jump-16.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=18.3) and (timer<18.6):
+        elif (timer>=17.1) and (timer<17.4):
             background_sprite = Sprite("assets\space_jump-17.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=18.6) and (timer<19.2):
+        elif (timer>=17.4) and (timer<17.7):
             background_sprite = Sprite("assets\space_jump-18.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=19.2) and (timer<19.5):
+        elif (timer>=17.7) and (timer<18):
             background_sprite = Sprite("assets\space_jump-19.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=19.5) and (timer<19.8):
+        elif (timer>=18) and (timer<18.3):
             background_sprite = Sprite("assets\space_jump-20.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
-        elif (timer>=19.8) and (timer<20.1):
+        elif (timer>=18.3) and (timer<18.4):
             background_sprite = Sprite("assets\space_jump-21.png", 1)
             background_sprite.x = 0
             background_sprite.y = 0
             background_sprite.draw()
 
-        timer += 0.08
+        timer += 0.23
     
     else:
         GAME_STATE = 2
@@ -845,13 +845,17 @@ def create_final():
         final_text = Sprite("assets\\text_ending_bad.png")
         final_image = Sprite("assets\\photo_ending_bad.png")
 
-    elif (winner == 1) and (ship_math.score <= 6):
+    elif (winner == 1) and (ship_math.score <= ((asteroid_length // 2) + 1)):
         final_text = Sprite("assets\\text_ending_ok.png")
         final_image = Sprite("assets\\photo_ending_ok.png")
 
-    elif (winner == 1) and (ship_math.score <= 9):
+    elif (winner == 1) and (ship_math.score <= asteroid_length - 1):
         final_text = Sprite("assets\\text_ending_nice.png")
         final_image = Sprite("assets\\photo_ending_nice.png")
+
+    elif (winner == 1) and (ship_math.score == asteroid_length):
+        final_text = Sprite("assets\\text_ending_perfect.png")
+        final_image = Sprite("assets\\photo_ending_perfect.png")
 
     final_text.x = window_width/2 - final_text.width/2
     final_text.y = window_height

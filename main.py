@@ -3,7 +3,7 @@ from PPlay.sprite import *
 from PPlay.gameimage import *
 from PPlay.mouse import*
 from PPlay.keyboard import*
-from PPlay.sound import*
+#from PPlay.sound import *
 from draw import *
 from scrolling import *
 from asteroid_movement import *
@@ -170,7 +170,9 @@ fonte = pygame.font.SysFont('ariel', 50, True, False)
 screen = window.screen
 
 # Criação dos efeitos sonoros
-transition_sound = Sound("sounds//transition_sound.ogg")
+#transition_sound = Sound('transition_sound.ogg')
+#transition_sound.load('transition_sound.ogg')
+#transition_sound.set_volume(100)
 
 
 def create_equation():
@@ -514,7 +516,7 @@ def transition():
 
     window.set_background_color((0,0,0))
 
-    transition_sound.play()
+    #transition_sound.play()
 
     if (timer < 30):
         if (timer>=0.0) and (timer<0.3):
@@ -861,6 +863,8 @@ def show_final():
     """
     Mostrar o final
     """
+    global GAME_STATE
+
     #reinicia a contagem de pontos
     ship_math.score = 0 
 
